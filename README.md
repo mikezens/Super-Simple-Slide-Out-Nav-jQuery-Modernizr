@@ -19,6 +19,10 @@ The Slide Out Nav is a micro library, compressed it is only 2kb. I have included
 
 4. Add example HTML to your template.
 
+#### Live Demo
+
+* [My Portfolio Site](http://mikezens-developer.com/)
+
 ***
 
 <br />
