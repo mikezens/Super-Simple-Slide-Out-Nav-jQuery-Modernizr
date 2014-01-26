@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+    <!--[if lt IE 7]>
+        <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+    <![endif]-->
+    
+    <!--[if IE 7]>
+        <html class="no-js lt-ie9 lt-ie8">
+    <![endif]-->
+    
+    <!--[if IE 8]>
+        <html class="no-js lt-ie9">
+    <![endif]-->
+    
+    <!--[if gt IE 8]><!-->
+        <html class="no-js"> 
+    <!--<![endif]-->
+
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Slide Out Nav Example</title>
+        <meta name="Description" content="">
+        
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-152x152-precomposed.png" />
+        
+        
+        <!-- Add your stylesheets here -->
+        <link rel="stylesheet" href="assets/css/screen-menu-right.css">
+        
+        <!-- Add your pre-render javascript here -->
+        <!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script>window.html5 || document.write('<script src="assets/js/suggested-libraries/html5shiv.js"><\/script>')</script>
+			<script src="assets/js/suggested-libraries/respond.js"></script>
+		<![endif]-->
+        
+        <script src="assets/js/required-libraries/modernizr-2.6.2.js"></script>
+    </head>
+    
+    
+    
+    <body>
+        <nav class="slide-nav -right -fixed -scrollable" role="navigation">
+            <div class='slide-nav-close'>
+                <a href='#'>X</a>
+            </div>
+            
+            <ul class=''>
+                <li><a href='#'>Nav Item 1</a></li>
+                <li><a href='#'>Nav Item 2</a></li>
+                <li><a href='#'>Nav Item 4</a></li>
+                <li><a href='#'>Nav Item 5</a></li>
+            </ul>
+        </nav>
+    
+        <div class='slide-nav-wrapper'>
+            <header role="banner" class="hdr-main" id='header'>
+                <div class='container'>
+                    <div class='column-half'>  
+                        <h2 class='logo'>Example</h2>
+                    </div>
+                    
+                    <div class='column-half -last'>  
+                        <a href='#' class='button slide-nav-menu'>Menu</a>
+                    </div>
+                </div>
+            </header>
+        
+        
+            <section class="main" role="main" id='main'>
+                <div class='container'>
+                    <div class='column-full'>
+                        <p>Curabitur blandit tempus porttitor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                        
+                        <p><a href='#' class='button -black open-nav'>Open Slide Out Nav</a>
+                    </div>
+                </div>
+            </section>         
+            
+            
+            <footer class="ftr-main" id='ftr-main'>
+                <div class='container'>
+                    <div class='column-full'>
+                        <h3>Get In Touch</h3>
+                        <h4>111.1111</h4>  
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+        <div class='slide-nav-bg'></div>
+        
+        
+        
+        <!-- Add your post-render javascript here -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/required-libraries/jquery-1.10.2.js"><\/script>')</script>
+        <script src="assets/js/suggested-libraries/fastclick.js"></script>
+        <script src="assets/js/jquery.slideNav-1.0.js"></script>
+        <script>
+            (function($, window) {
+                var slideNavRight = $.slideNav();
+                slideNavRight.loadNav();
+                
+                
+                $('.slide-nav ul a').click(function(e) {
+                    e.preventDefault();
+                    
+                    slideNavRight.closeNav();
+                });
+                
+                
+                $('.open-nav').click(function(e) {
+                    e.preventDefault();
+                    
+                    slideNavRight.toggleNav();
+                });
+            })(jQuery, window);
+        </script>
+
+        <!-- Add you template specific javascript -->
+        
+    </body>
+</html>

@@ -1,0 +1,136 @@
+// Type - Defaults
+//-------------------------------------------------//
+body {
+	font-size: $fontBase+px;
+	line-height: $lineBase+px;
+	
+	color: $black;
+	
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+}
+
+em { 
+    font-style: italic; 
+}
+
+strong { 
+    font-weight: bold; 
+}
+//-------------------------------------------------//
+
+
+// Type - Headlines
+//-------------------------------------------------//
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+    margin: 0 0 $spacingSmall;    
+
+	color: $black;
+	font-family: $headline-font;
+	font-weight: normal; 
+	
+	a {
+    	font-weight: inherit; 
+    	text-decoration: none;
+	}
+}
+
+h1 { 
+    margin-bottom: $spacingMedium;
+    
+    @include font-size(46, 50);
+}
+
+h2 { 
+    @include font-size(35, 40);
+}
+
+h3 { 
+    @include font-size(28, 34);
+}
+
+h4 {
+    @include font-size(21, 30);
+}
+
+
+h5 {
+    @include font-size(17, 24);
+}
+
+h6 {
+    @include font-size(14, 21);
+}
+//-------------------------------------------------//
+
+
+
+// Type - Paragraphs & Lists
+//-------------------------------------------------//
+p,
+ul li,
+ol li {
+    @include font-size(14, 21);
+    color: $black;
+}
+
+p { 
+    margin: 0 0 $spacingDefault 0; 
+    
+    a { 
+        color: $black;
+        text-decoration: underline; 
+        outline: 0;
+        
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+ul, 
+ol { 
+    margin: 0 0 $spacingDefault 0; 
+    padding: 0 0 0 17px;
+    
+    li { 
+        margin-bottom: $spacingSmall; 
+    }
+}
+    
+ul { 
+    list-style: square outside; 
+    
+    &.-none { 
+        list-style: none outside; 
+    }
+    
+    &.-circle { 
+        list-style: circle outside; 
+    }
+    
+    &.-disc { 
+        list-style: disc outside; 
+    }
+}
+
+ol { 
+    list-style: decimal; 
+}
+//-------------------------------------------------//
+
+
+// Links
+//-------------------------------------------------//
+a { 
+    color: $black;
+    text-decoration: none;
+    
+    outline: 0;
+}
+//-------------------------------------------------//

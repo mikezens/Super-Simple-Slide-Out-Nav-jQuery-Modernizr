@@ -1,0 +1,252 @@
+// Navigation Slide - Variables
+//-------------------------------------------------//
+
+// Width and Direction
+$navSlideWidth: 280px;
+$navSlideDirection:  right; // left or right;
+$navSlideTransformX: if($navSlideDirection == left, $navSlideWidth, -$navSlideWidth);
+
+
+// Colors
+$white: #fff;
+$black: #333333;
+$grey: #ccc;
+$greyLightest: #f3f3f3;
+
+
+// Font
+$fontBase: 16;
+$lineBase: 21;
+
+
+// Spacing
+$spacing: 20;
+
+$spacingTiny: $spacing*.25+px;
+$spacingSmall:  $spacing*.5+px;
+$spacingMedium: $spacing*.75+px;
+$spacingDefault: $spacing+px;
+$spacingLarge: $spacing*2+px;
+$spacingBig: $spacing*3+px;
+$spacingHuge: $spacing*4+px;
+//-------------------------------------------------//
+
+
+// Navigation Slide - Mixins
+//-------------------------------------------------//
+@mixin inline-block() {
+    display: inline-block;
+    
+    vertical-align: baseline;
+    
+    zoom: 1;
+    
+    *display: inline;
+    *vertical-align: auto;
+}
+
+
+@function calculate-rem($size) {
+    $remSize: $size / $fontBase;
+    @return #{$remSize}rem;
+}
+
+
+// Use pixels for $size and $line variables
+@mixin font-size($size, $line: $size * 1.5) {
+    font-size: $size+px; //Fallback in px
+    font-size: calculate-rem($size);
+    
+    line-height: $line+px; //Fallback in px
+    line-height: calculate-rem($line);
+}
+
+
+@mixin box-shadow($bs) {
+    -webkit-box-shadow: $bs;
+    -moz-box-shadow: $bs;
+    -o-box-shadow: $bs;
+    -ms-box-shadow: $bs;
+    box-shadow: $bs;
+}
+
+
+@mixin transition($ts) {
+    -webkit-transition: $ts;
+    -moz-transition: $ts;
+    -o-transition: $ts;
+    -ms-transition: $ts;
+    transition: $ts;
+}
+
+
+@mixin transform($ts) {
+    -webkit-transform: $ts;
+    -moz-transform: $ts;
+    -o-transform: $ts;
+    -ms-transform: $ts;
+    transform: $ts;
+}
+
+
+@mixin border-radius($br) {
+    -webkit-border-radius: $br;
+    -moz-border-radius: $br;
+    -o-border-radius: $br;
+    -ms-border-radius: $br;
+    border-radius: $br;
+    background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+//-------------------------------------------------//
+
+
+// Navigation Slide - General
+//-------------------------------------------------//
+body,
+.slide-nav {
+    background: $greyLightest;
+}
+
+.slide-nav {
+	height: 100%;
+	width: $navSlideWidth;
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	
+	float: left;
+	
+	&.-right {
+    	left: auto;
+    	right: 0;
+	
+    	float: right;
+	}
+	
+	&.-fixed {
+    	position: fixed;
+	}
+	
+	&.-scrollable {
+    	overflow-y: auto;
+	}
+}
+
+.slide-nav-wrapper {
+    min-height: 100%;
+	height: auto !important;
+	height: 100%;
+
+    background: $white;
+
+    position: relative;
+    z-index: 4;
+    
+    overflow: hidden;
+}
+
+.slide-nav-bg {
+    width: 100%;
+    height: 100%;
+    
+    background: $grey;
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    
+    @include box-shadow( 0 0 15px rgba($black, .45));
+}
+
+.slide-nav-lock {
+    overflow: hidden;
+}
+//-------------------------------------------------//
+
+
+
+// Navigation Slide - Action
+//-------------------------------------------------//
+.slide-nav-wrapper,
+.slide-nav-bg {
+    @include transition(.25s ease-in-out);
+}
+
+.slide-nav-opened {
+    .csstransforms & {
+    	@include transform(translate($navSlideTransformX,0));
+	}
+    
+    .csstransforms.csstransforms3d & {
+    	@include transform(translate3D($navSlideTransformX,0,0));
+	}
+	
+	.csstransforms.csstransforms3d &,
+	.csstransforms & {
+    	left: auto;
+	}
+	
+	.no-csstransforms3d &,
+	.no-csstransforms,
+	& {
+    	left: $navSlideTransformX;
+	}
+}
+//-------------------------------------------------//
+
+
+
+// Navigation Slide - List
+//-------------------------------------------------//
+.slide-nav {
+    ul {
+        margin:0 $spacingDefault $spacingLarge $spacing*1.5+px;
+        
+        li {
+            a {
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+//-------------------------------------------------//
+
+
+
+
+// Navigation Slide - Close
+//-------------------------------------------------//
+.slide-nav-close {
+    text-align: right;
+    
+    a {
+        @include inline-block;
+            
+        background: $black;
+        
+        width: 36px;
+        height: 36px;
+                    
+        margin: $spacingDefault $spacingDefault 0;
+        padding: 0;
+        
+        color: $white;
+        @include font-size(15, 36);
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        
+        @include border-radius(36px);
+                    
+        &:hover {
+            color: $grey;
+        }
+    }
+}
+//-------------------------------------------------//

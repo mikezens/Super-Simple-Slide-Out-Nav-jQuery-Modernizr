@@ -1,0 +1,25 @@
+// Credit: http://web-design-weekly.com/blog/2013/05/12/handy-sass-mixins/
+
+@mixin breakpoint($point) {
+    @if $point == desktop {
+        @media only screen and (min-width: 960px) { @content; }
+    }
+    @else if $point == tablet-phone-max {
+        @media only screen and (max-width: 959px) { @content; }
+    }
+    @else if $point == tablet {
+       @media only screen and (min-width: 768px) and (max-width: 959px) { @content; } 
+    }
+    @else if $point == tablet-min {
+        @media only screen and (min-width: 768px) { @content; }
+    }
+    @else if $point == phone-max {
+        @media only screen and (max-width: 767px) { @content; }
+    }
+    @else if $point == phone-horz {
+       @media only screen and (min-width: 480px) and (max-width: 767px) { @content; } 
+    }
+    @else if $point == phone-vert {
+        @media only screen and (max-width: 479px) { @content; }
+    }
+}

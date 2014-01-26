@@ -1,0 +1,26 @@
+@function calculate-rem($size) {
+    $remSize: $size / $fontBase;
+    @return #{$remSize}rem;
+}
+
+// Use pixels for $size and $line variables
+@mixin font-size($size, $line: $size * 1.5) {
+    font-size: $size+px; //Fallback in px
+    font-size: calculate-rem($size);
+    
+    line-height: $line+px; //Fallback in px
+    line-height: calculate-rem($line);
+}
+
+// Use pixels for the $line variable
+@mixin line-height($line: $sizeValue * 1.5){
+    line-height: $line+px; //Fallback in px
+    line-height: calculate-rem($line);
+}
+
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

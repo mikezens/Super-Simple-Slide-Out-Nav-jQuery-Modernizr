@@ -1,0 +1,164 @@
+// Grid - Variables
+// Credit: http://modulargrid.org/
+//-------------------------------------------------//
+$num-of-modules: 12;
+$module-width: 40px;
+$gutter: 40px;
+
+$page-width: 960px;
+$layout-width: 920px;
+
+$page-width-tablet: 768px;
+$layout-width-tablet: 720px;
+
+$page-width-mobile: 320px;
+
+$flex-gutter: percentage($gutter/$layout-width);
+//-------------------------------------------------//
+
+
+// Gride - Mixin
+// Credit: http://cognition.happycog.com/article/a-simple-grid-mixin-explained
+// CodePen: http://codepen.io/alliwagner/pen/vsHgm
+//-------------------------------------------------//
+@mixin grid($col-num, $gutter-num) {
+	width: percentage((($module-width * $col-num)+($gutter * $gutter-num))/$layout-width);
+}
+//-------------------------------------------------//
+
+
+// Grid - Layouts
+//-------------------------------------------------//
+.page-wrapper {
+    min-width: $page-width-mobile;
+    
+    @include breakpoint(tablet) {
+        min-width: $page-width-tablet;
+    }
+    
+    @include breakpoint(desktop) {
+        min-width: $page-width;    
+    }
+}
+
+.container { 
+    position: relative;
+    
+    margin: 0 auto;
+    padding: 0;
+    
+    @include clearfix();
+    
+    @include breakpoint(desktop) {
+        width: $layout-width;
+    }
+    
+    @include breakpoint(tablet) {
+        width: $layout-width-tablet;
+    }
+}
+//-------------------------------------------------//
+
+
+// Grid - Columns
+//-------------------------------------------------//
+// Elements
+.column-full,
+.column-half,
+.column-two-third,
+.column-one-third,
+.column-three-fourth,
+.column-one-fourth {
+    width: 85%;
+    
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    
+    &.-nested {
+        width: 100%;
+        
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+@include breakpoint(tablet-min) {
+    .column-full,
+    .column-half,
+    .column-two-third,
+    .column-one-third,
+    .column-three-fourth,
+    .column-one-fourth {    
+        float: left;
+        
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .column-half,
+    .column-one-third,
+    .column-two-third,
+    .column-three-fourth,
+    .column-one-fourth {
+        &,
+        &.-nested {
+            margin-right: $flex-gutter;
+        }
+        
+        &.-last {
+            margin-right: 0;
+        }
+        
+        &.-flex-gutter-append {
+            padding-left: $flex-gutter;
+        }
+        
+        &.-flex-gutter-prepend {
+            padding-right: $flex-gutter;
+        }
+    }
+    
+    .column-full {
+        &,
+        &.-nested {
+            @include grid(12,11);    
+        }
+    }
+    
+    .column-half {
+        &,
+        &.-nested {
+            @include grid(6,5);
+        }
+    }
+    
+    .column-two-third {
+        &,
+        &.-nested {
+            @include grid(8,7);
+        }
+    }
+    
+    .column-one-third {
+        &,
+        &.-nested {
+            @include grid(4,3);
+        }
+    }
+    
+    .column-three-fourth {
+        &,
+        &.-nested {
+            @include grid(9,8);
+        }
+    }
+    
+    .column-one-fourth {
+        &,
+        &.-nested {
+            @include grid(3,2);
+        }
+    }
+}
+//-------------------------------------------------//

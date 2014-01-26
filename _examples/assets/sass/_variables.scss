@@ -1,0 +1,37 @@
+// General
+//-------------------------------------------------//
+$assetsDir: '/assets/';
+//-------------------------------------------------//
+
+
+// Font
+//-------------------------------------------------//
+$body-font: serif;
+$headline-font: sans-serif;
+
+$fontBase: 16;
+$lineBase: 21;
+//-------------------------------------------------//
+
+
+// Colors
+//-------------------------------------------------//
+$white: #fff;
+$black: #333333;
+$grey: #ccc;
+$greyLightest: #f3f3f3;
+//-------------------------------------------------//
+
+
+// Spacing
+//-------------------------------------------------//
+$spacing: 20;
+
+$spacingTiny: $spacing*.25+px;
+$spacingSmall:  $spacing*.5+px;
+$spacingMedium: $spacing*.75+px;
+$spacingDefault: $spacing+px;
+$spacingLarge: $spacing*2+px;
+$spacingBig: $spacing*3+px;
+$spacingHuge: $spacing*4+px;
+//-------------------------------------------------//

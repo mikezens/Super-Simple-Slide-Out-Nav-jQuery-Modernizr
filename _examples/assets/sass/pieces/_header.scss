@@ -1,0 +1,29 @@
+// Header
+//-------------------------------------------------//
+.hdr-main {
+    background: $black;
+    
+    padding: $spacingDefault 0;    
+    
+    .logo {
+        margin: 0 0 $spacingSmall;
+        
+        @include breakpoint(tablet-min) {
+            margin-bottom: 0;
+        }
+        
+        &,
+        a {
+            color: $white;
+        }
+    }
+    
+    @include breakpoint(tablet-min) {
+        .column-half {
+            &.-last {
+                text-align: right;
+            }
+        }
+    }
+}
+//-------------------------------------------------//

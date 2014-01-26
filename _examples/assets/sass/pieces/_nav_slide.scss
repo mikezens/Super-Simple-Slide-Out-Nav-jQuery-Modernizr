@@ -1,0 +1,159 @@
+// Navigation Slide - Variables
+//-------------------------------------------------//
+$navSlideWidth: 280px;
+$navSlideDirection:  right; // left or right;
+$navSlideTransformX: if($navSlideDirection == left, $navSlideWidth, -$navSlideWidth);
+//-------------------------------------------------//
+
+
+// Navigation Slide - General
+//-------------------------------------------------//
+body,
+.slide-nav {
+    background: $greyLightest;
+}
+
+.slide-nav {
+	height: 100%;
+	width: $navSlideWidth;
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	
+	float: left;
+	
+	&.-right {
+    	left: auto;
+    	right: 0;
+	
+    	float: right;
+	}
+	
+	&.-fixed {
+    	position: fixed;
+	}
+	
+	&.-scrollable {
+    	overflow-y: auto;
+	}
+}
+
+.slide-nav-wrapper {
+    min-height: 100%;
+	height: auto !important;
+	height: 100%;
+
+    background: $white;
+
+    position: relative;
+    z-index: 4;
+    
+    overflow: hidden;
+}
+
+.slide-nav-bg {
+    width: 100%;
+    height: 100%;
+    
+    background: $grey;
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    
+    @include box-shadow( 0 0 15px rgba($black, .45));
+}
+
+.slide-nav-lock {
+    overflow: hidden;
+}
+//-------------------------------------------------//
+
+
+
+// Navigation Slide - Action
+//-------------------------------------------------//
+.slide-nav-wrapper,
+.slide-nav-bg {
+    @include transition(.25s ease-in-out);
+}
+
+.slide-nav-opened {
+    .csstransforms & {
+    	@include transform(translate($navSlideTransformX,0));
+	}
+    
+    .csstransforms.csstransforms3d & {
+    	@include transform(translate3D($navSlideTransformX,0,0));
+	}
+	
+	.csstransforms.csstransforms3d &,
+	.csstransforms & {
+    	left: auto;
+	}
+	
+	.no-csstransforms3d &,
+	.no-csstransforms,
+	& {
+    	left: $navSlideTransformX;
+	}
+}
+//-------------------------------------------------//
+
+
+
+// Navigation Slide - List
+//-------------------------------------------------//
+.slide-nav {
+    ul {
+        margin:0 $spacingDefault $spacingLarge $spacing*1.5+px;
+        
+        li {
+            a {
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+//-------------------------------------------------//
+
+
+
+
+// Navigation Slide - Close
+//-------------------------------------------------//
+.slide-nav-close {
+    text-align: right;
+    
+    a {
+        @include inline-block;
+            
+        background: $black;
+        
+        width: 36px;
+        height: 36px;
+                    
+        margin: $spacingDefault $spacingDefault 0;
+        padding: 0;
+        
+        font-family: $headline-font;
+        color: $white;
+        @include font-size(15, 36);
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+        
+        @include border-radius(36px);
+                    
+        &:hover {
+            color: $grey;
+        }
+    }
+}
+//-------------------------------------------------//
